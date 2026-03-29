@@ -1,0 +1,56 @@
+# LaTeX
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.lb
+*.lof
+*.lot
+*.out
+*.toc
+*.pdf
+*.ps
+*.eps
+*.synctex.gz
+*.synctex(busy)
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# TensorFlow
+.tensorflow/
+*.pb
+*.ckpt*
+logs/
+
+*.doc
+*.docx
+
+ASSESSMENT.md
