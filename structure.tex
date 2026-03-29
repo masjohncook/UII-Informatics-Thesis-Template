@@ -1,0 +1,96 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}					% Proper font encoding for Indonesian/Latin characters
+\usepackage[bahasa,english]{babel}			% Bilingual: Indonesian (bahasa) + English
+\usepackage{verbatim}						% To use \begin{comment} text to comment \end{comment} or inserting codes \begin{verbatim}
+%\usepackage{minted}						    % Insert code programming inline
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[titles]{tocloft}
+\usepackage{cite}							% To cite your references
+\usepackage{graphicx}						% Provide features to customize graphics
+\usepackage{draftwatermark}					% To add a watermark : default = DRAFT
+\usepackage{setspace}						% Provide support for setting the spacing between lines
+\usepackage{titlesec}						% To modify the seciton titles
+\usepackage{nomencl}						% To create nomenclature list
+\makenomenclature							% Activate the nomenclature
+\usepackage{acronym}						% To create Acronyms list
+\usepackage{booktabs}
+\usepackage{footnote}
+\usepackage{caption}						% To manipulate captions for Figures and Tables
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont={bf,white},textfont={bf,white}}
+\captionsetup{font=large}
+\usepackage{subfig}
+\usepackage{floatrow}						% To add a note under captions of Tables and Figures
+\floatsetup[table]{capposition=top,font=large}			% To force the Tables captions back on top
+\usepackage[flushleft]{threeparttable}		% To create tables with three sections (title, table, note)
+\usepackage{array}							% To handle tabular and array environments
+\usepackage{chngcntr}	
+\usepackage{multirow}	
+\usepackage{amsmath}
+
+% To manipulate counters for Figures and Tables
+\usepackage{pdfpages}						% To Include PDFS
+\counterwithout{equation}{chapter} 			% Remove the chapter number in equations numbering
+% \counterwithin{equation}{chapter}  		% Add the chapter number if you prefer but I think it's not correct with given format
+\counterwithin{table}{chapter} 			% Remove the chapter number in tables numbering
+% set the default margins of the layout, it will be overwritten at the beginning for first pages
+\usepackage[a4paper,top=25mm,bottom=25mm,left=20mm,right=20mm,bindingoffset=10mm]{geometry}
+\pagestyle{plain}
+% Redefinition of the chapter command
+\makeatletter
+\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
+                       \if@mainmatter
+                         \refstepcounter{chapter}%
+                         \typeout{\@chapapp \space \thechapter.}%
+                         \addcontentsline{toc}{chapter}%
+                                   {\protect\numberline{\thechapter}#1}%
+                       \else				
+                         \addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else                      
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+\makeatother
+
+\titleformat{\chapter}[display]
+{\fontsize{30}{10}\selectfont 
+\normalfont\bfseries\centering}
+{\fontsize{30}{10}\selectfont \chaptertitlename\ \thechapter}{0.5em}{}
+
+\makeatletter \@removefromreset{figure}{chapter}\makeatother
+
+%% Bilingual section headings (Indonesian primary)
+\renewcommand{\contentsname}{Daftar Isi}
+\renewcommand{\listfigurename}{Daftar Gambar}
+\renewcommand{\listtablename}{Daftar Tabel}
+\renewcommand{\bibname}{Daftar Pustaka}
+\renewcommand{\appendixname}{Lampiran}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{\setstretch{0.1}}
+
+\renewcommand{\emph}[1]{``#1''}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+
+\newcommand\T{\rule{0pt}{2.6ex}}       % Top strut - used in Tables to add space on Top of the cell
+\newcommand\B{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut - used in Tables to add space on Bottom of the cell
+
+\renewcommand*\cftchapnumwidth{3em}
+\renewcommand{\cftchapdotsep}{\cftdotsep}% Chapters should use dots in ToC
+
+%%%% Language switching short commands %%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\IDon}{\begin{otherlanguage}{bahasa}} %% Opens Indonesian writing
+\newcommand{\IDoff}{\end{otherlanguage}}           %% Closes Indonesian writing
+\newcommand{\ENon}{\begin{otherlanguage}{english}} %% Opens English writing
+\newcommand{\ENoff}{\end{otherlanguage}}           %% Closes English writing

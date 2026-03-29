@@ -1,0 +1,33 @@
+%% Copy your main.toc into Gen_Toc2Text folder and name it myOutline.toc %%
+%% if your main tex file is called main.tex of course ... otherwise you adapt %%
+%% Remove the first line with the Abstract written in Chinese ..., the script cannot handle it%%
+%% To delete and add manually directly in the text file : %%
+%%\contentsline {chapter}{\begin {CJK}{UTF8}{bkai}摘要 \end {CJK}}{i} = 摘要 ..... i %%
+%% You're very welcome to update this code ... %%
+
+
+\newcommand\toc{myOutline} %% Replace myOutline with the name of your tex/toc file (without extension)
+\documentclass{article}
+\newwrite\txtfile
+\immediate\openout\txtfile=\toc.txt
+\renewcommand\numberline[1]{#1 }
+\def\levelch{chapter}
+\def\levelsec{section}
+\renewcommand\contentsline[3]%
+  {\def\tmp{#1}%
+   \ifx\tmp\levelch
+     \immediate\write\txtfile{#2 ..... #3}%   
+   \else
+     \ifx\tmp\levelsec
+       \immediate\write\txtfile{\space\space #2 ...... #3}%
+     \else
+       %%% Code for further toc levels
+     \fi
+   \fi
+  }
+\begin{document}
+\input{\toc.toc}
+\end{document}
+
+%% Compile this file, it will fail to output the PDF but normally you should have the %%
+%% file : myOutline.txt with your table of content %%

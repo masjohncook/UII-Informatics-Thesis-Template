@@ -1,0 +1,73 @@
+HOW TO CREATE A NOMENCLATURE 
+
+
+1. In the Headers with the other \usepackage{package_name} commands. 
+Need to insert : 
+
+> \usepackage{nomencl} // load the nomenclature package				
+> \makenomenclature  // tell the compiler that we will have some nomenclature to index							
+
+
+2. After \begin{document} : 
+place : 
+> printnomenclature // place whereever you want the nomenclature to be displayed
+
+3. After \begin{document}, anywhere you use a symbol for the first time. 
+Add a line : 
+> \nomenclature{$xx$}{Definition of xx}
+
+It actually  does not really matter exactly where you add this line. 
+The final nomenclature list will display the symbols. 
+ 
+If you prefer you could even write all the "\nomenclature" commands in one separated *.tex file 
+and simply insert it with \input{nomenclature.tex}.
+
+It is probably more convenient to just add nomenclature lines while writing equations especially if you have a lot of symbols. 
+
+4.In order to effectively display the nomenclature we need an extra command to create correct compiler files that 
+will index all your "\nomenclature" where you put "printnomenclature" 
+
+4.1 : Compile your document as usual , typically PdFLatex -> View PDF, the default one
+
+4.2 : Open a console Terminal and go to your folder where the main.tex file is 
+      For example in Windows you can open the folder and type "cmd" in the bar adress
+
+4.3 : Now you have to manually build the nomenclature with the following command to execute in the terminal you just opened : 
+ 
+> makeindex main.nlo -s nomencl.ist -o main.nls
+
+Of course if you decided to rename your top source file main.tex to somethingelse.tex .. do not be an idiot 
+and change the command to : 
+
+> makeindex somethingelse.nlo -s nomencl.ist -o somethingelse.nls
+
+The step 4.3 should display some logs in the terminal like : 
+"scanning input file main.nlo ..."
+"Sorting entries ... "
+"Generating output file main.nls ..."
+"Output written in main.nls .."
+"Transcript written in main.lig .." 
+
+4.4 : Recompile just like step 4.1 
+
+Now your nomenclature should be displayed and updated. 
+
+If you add more \nomenclature{$new$}{new stuff}, it will really be displayed 
+and the final Nomenclature updated ONLY IF you do steps 4.1, 4.2 and 4.3 
+
+You do not necessarily have to do 4.1-4.3 everytime you add a new \nomenclature{} .. 
+you can leave it for later and do the steps 4.1-4.3 from time to time to update it. 
+
+You will notice that everytime you do PdFLatex->View PDF, even if you added a new \nomenclature{}, the 
+Nomenclature is still the same as the one you last compiled with 4.1-4.3
+
+The order of which symbols appear depends on ASCII codes of symbols, no idea how to fix their appearance order.
+
+
+***Summary*** 
+
+PdFLatex -> View PDF = compile with previous nomenclature compiled and show the result
+
++ >makeindex main.nlo -s nomencl.ist -o main.nls **in the terminal** = update the nomenclature with the last compiled files 
++ PdFLatex -> View PDF = recompile the whole thing and display the result with updated nomenclature 
+

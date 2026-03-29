@@ -1,0 +1,39 @@
+\begin{figure}[!ht]
+      \centering
+      \includegraphics[scale=0.8]{fast-and-furious2.jpg}
+      \caption{Vin Diesel is actually always angry}
+      \floatfoot{Source : Google Image}
+      \label{vinstillangry}
+ \end{figure}
+\par 
+This is how to reference a table, Table.\ref{table2}.
+
+\begin{table}[!ht]
+   \caption{Table without footnote}\label{table2}
+    \centering
+    \begin{threeparttable}
+      \small
+      \begin{tabular}{lcc}\toprule
+         X & Y & Z \\
+           & y & z \\ \midrule
+         X & Y & Z \\
+         X & Y & Z \\ \bottomrule
+       \end{tabular}
+       %\begin{tablenotes}
+         %\footnotesize
+         %\item Source: If any
+       %\end{tablenotes}
+     \end{threeparttable} 
+\end{table}
+
+\begin{equation}
+F(x)= \int^a_b \frac{\gamma}{3}h^3 \label{eq}
+\end{equation}
+% first use of the symbol for Planck constant force so we declare for nomenclature -- does not appear in the text
+\nomenclature{$h$}{Planck constant}
+
+blablablablabl \ac{CDMA} , first time I am talking about CDMA. 
+Bloblobbloblob \ac{CDMA}, I already talked about CDMA. 
+Bliblibliblibli \acl{CDMA} if I want to reuse the full name after.
+
+
