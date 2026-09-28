@@ -1,96 +1,162 @@
+% Konfigurasi format Template Tugas Akhir S1 Informatika UII
+% Acuan: Template-skripsi-final-versi2020.docx
+
+% Font Times-compatible yang stabil pada compiler default pdfLaTeX di Overleaf.
+% newtxtext/newtxmath merupakan padanan terbuka Times New Roman untuk teks dan rumus.
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}					% Proper font encoding for Indonesian/Latin characters
-\usepackage[bahasa,english]{babel}			% Bilingual: Indonesian (bahasa) + English
-\usepackage{verbatim}						% To use \begin{comment} text to comment \end{comment} or inserting codes \begin{verbatim}
-%\usepackage{minted}						    % Insert code programming inline
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage[titles]{tocloft}
-\usepackage{cite}							% To cite your references
-\usepackage{graphicx}						% Provide features to customize graphics
-\usepackage{draftwatermark}					% To add a watermark : default = DRAFT
-\usepackage{setspace}						% Provide support for setting the spacing between lines
-\usepackage{titlesec}						% To modify the seciton titles
-\usepackage{nomencl}						% To create nomenclature list
-\makenomenclature							% Activate the nomenclature
-\usepackage{acronym}						% To create Acronyms list
+\usepackage{newtxtext,newtxmath}
+\usepackage{tgcursor}
+
+\usepackage[a4paper,top=25.4mm,bottom=25.4mm,left=25.4mm,right=25.4mm]{geometry}
+\usepackage{setspace}
+\onehalfspacing%
+\setlength{\parindent}{1cm}
+\setlength{\parskip}{0pt}
+\usepackage{indentfirst}
+\raggedbottom%
+
+\usepackage{graphicx}
+\graphicspath{{Images/}{./}}
+\usepackage{float}
 \usepackage{booktabs}
-\usepackage{footnote}
-\usepackage{caption}						% To manipulate captions for Figures and Tables
-\DeclareCaptionFont{white}{\color{white}}
-\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#3}}}
-\captionsetup[lstlisting]{format=listing,labelfont={bf,white},textfont={bf,white}}
-\captionsetup{font=large}
-\usepackage{subfig}
-\usepackage{floatrow}						% To add a note under captions of Tables and Figures
-\floatsetup[table]{capposition=top,font=large}			% To force the Tables captions back on top
-\usepackage[flushleft]{threeparttable}		% To create tables with three sections (title, table, note)
-\usepackage{array}							% To handle tabular and array environments
-\usepackage{chngcntr}	
-\usepackage{multirow}	
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
 \usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[natbibapa]{apacite}
+\usepackage{microtype}
+\usepackage[hidelinks,unicode,hypertexnames=false]{hyperref}
 
-% To manipulate counters for Figures and Tables
-\usepackage{pdfpages}						% To Include PDFS
-\counterwithout{equation}{chapter} 			% Remove the chapter number in equations numbering
-% \counterwithin{equation}{chapter}  		% Add the chapter number if you prefer but I think it's not correct with given format
-\counterwithin{table}{chapter} 			% Remove the chapter number in tables numbering
-% set the default margins of the layout, it will be overwritten at the beginning for first pages
-\usepackage[a4paper,top=25mm,bottom=25mm,left=20mm,right=20mm,bindingoffset=10mm]{geometry}
-\pagestyle{plain}
-% Redefinition of the chapter command
-\makeatletter
-\def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
-                       \if@mainmatter
-                         \refstepcounter{chapter}%
-                         \typeout{\@chapapp \space \thechapter.}%
-                         \addcontentsline{toc}{chapter}%
-                                   {\protect\numberline{\thechapter}#1}%
-                       \else				
-                         \addcontentsline{toc}{chapter}{#1}%
-                       \fi
-                    \else                      
-                      \addcontentsline{toc}{chapter}{#1}%
-                    \fi
-                    \chaptermark{#1}%
-                    \if@twocolumn
-                      \@topnewpage[\@makechapterhead{#2}]%
-                    \else
-                      \@makechapterhead{#2}%
-                      \@afterheading
-                    \fi}
-\makeatother
+% Warna hanya dipakai pada kotak petunjuk template.
+\definecolor{uiiyellow}{HTML}{F4C300}
+\definecolor{instructionbg}{HTML}{FFF3F3}
+\definecolor{instructionborder}{HTML}{B00020}
 
-\titleformat{\chapter}[display]
-{\fontsize{30}{10}\selectfont 
-\normalfont\bfseries\centering}
-{\fontsize{30}{10}\selectfont \chaptertitlename\ \thechapter}{0.5em}{}
-
-\makeatletter \@removefromreset{figure}{chapter}\makeatother
-
-%% Bilingual section headings (Indonesian primary)
-\renewcommand{\contentsname}{Daftar Isi}
-\renewcommand{\listfigurename}{Daftar Gambar}
-\renewcommand{\listtablename}{Daftar Tabel}
-\renewcommand{\bibname}{Daftar Pustaka}
-\renewcommand{\appendixname}{Lampiran}
+% Penomoran bab menggunakan Romawi, sedangkan turunan dan objek memakai angka Arab.
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
-
-\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{\setstretch{0.1}}
-
-\renewcommand{\emph}[1]{``#1''}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 
-\newcommand\T{\rule{0pt}{2.6ex}}       % Top strut - used in Tables to add space on Top of the cell
-\newcommand\B{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut - used in Tables to add space on Bottom of the cell
+% Judul bab dan subbab mengikuti Times New Roman 12 pt, tebal, spasi 1,5.
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\fontsize{12}{18}\selectfont\centering}
+  {BAB \Roman{chapter}}{0pt}{\MakeUppercase}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\bfseries\fontsize{12}{18}\selectfont\centering}
+  {}{0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{18pt}
 
-\renewcommand*\cftchapnumwidth{3em}
-\renewcommand{\cftchapdotsep}{\cftdotsep}% Chapters should use dots in ToC
+\titleformat{\section}
+  {\normalfont\bfseries\fontsize{12}{18}\selectfont}
+  {\thesection}{0.8em}{}
+\titleformat{\subsection}
+  {\normalfont\bfseries\fontsize{12}{18}\selectfont}
+  {\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}
+  {\normalfont\bfseries\fontsize{12}{18}\selectfont}
+  {\thesubsubsection}{0.8em}{}
+\titlespacing*{\section}{0pt}{18pt}{0pt}
+\titlespacing*{\subsection}{0pt}{18pt}{0pt}
+\titlespacing*{\subsubsection}{0pt}{18pt}{0pt}
 
-%%%% Language switching short commands %%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\IDon}{\begin{otherlanguage}{bahasa}} %% Opens Indonesian writing
-\newcommand{\IDoff}{\end{otherlanguage}}           %% Closes Indonesian writing
-\newcommand{\ENon}{\begin{otherlanguage}{english}} %% Opens English writing
-\newcommand{\ENoff}{\end{otherlanguage}}           %% Closes English writing
+% Nomor halaman di tengah bawah; tanpa header.
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\fontsize{12}{14}\selectfont\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\fontsize{12}{14}\selectfont\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% Label lokal dan format caption.
+\renewcommand{\contentsname}{DAFTAR ISI}
+\renewcommand{\listfigurename}{DAFTAR GAMBAR}
+\renewcommand{\listtablename}{DAFTAR TABEL}
+\renewcommand{\bibname}{DAFTAR PUSTAKA}
+\renewcommand{\figurename}{Gambar}
+\renewcommand{\tablename}{Tabel}
+\captionsetup{
+  font={normalfont,stretch=1.5},
+  labelfont=normalfont,
+  textfont=normalfont,
+  labelsep=space,
+  justification=centering,
+  singlelinecheck=true,
+  skip=6pt
+}
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+
+% Daftar dan penomoran bertingkat.
+\setlist{nosep,leftmargin=1cm,labelsep=0.4cm}
+\setlist[enumerate,1]{label=\alph*.,ref=\alph*}
+\setlist[enumerate,2]{label={(\arabic*)},ref={\theenumi.\arabic*}}
+
+% Kode program: font monospaced 9 pt dan spasi tunggal.
+\lstset{
+  basicstyle=\ttfamily\fontsize{9}{10.8}\selectfont,
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  frame=single,
+  rulecolor=\color{black},
+  xleftmargin=6pt,
+  xrightmargin=6pt,
+  aboveskip=6pt,
+  belowskip=6pt
+}
+
+% Kotak petunjuk berwarna merah seperti penanda pada template Word.
+\newcommand{\petunjuk}[1]{%
+  \begin{center}
+  \setlength{\fboxsep}{8pt}%
+  \fcolorbox{instructionborder}{instructionbg}{%
+    \parbox{0.92\textwidth}{\color{instructionborder}\singlespacing\fontsize{10}{12}\selectfont\textbf{PETUNJUK TEMPLATE:} #1}%
+  }
+  \end{center}
+}
+
+% Judul bagian awal yang boleh/tidak boleh masuk Daftar Isi.
+\newcommand{\bagianawal}[1]{%
+  \clearpage
+  \phantomsection%
+  \chapter*{#1}
+  \addcontentsline{toc}{chapter}{#1}
+}
+\newcommand{\bagianawaltanpatoc}[1]{%
+  \clearpage
+  \chapter*{#1}
+}
+
+% Kolom tabel yang fleksibel.
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% Metadata PDF diisi setelah variabel identitas didefinisikan pada main.tex.
+\newcommand{\setpdfmetadata}{%
+  \hypersetup{
+    pdftitle={\judulTA},
+    pdfauthor={\namaMahasiswa},
+    pdfsubject={Tugas Akhir Program Studi Informatika Universitas Islam Indonesia},
+    pdfkeywords={tugas akhir, informatika, UII}
+  }
+}

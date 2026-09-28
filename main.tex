@@ -1,242 +1,55 @@
-%%%%%%%% Header %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\documentclass[12pt,singleside]{report}    %for one sided document
-\documentclass[12pt,twoside]{report} 		%for two sided document
-\input{structure.tex}
-%watermak default displays is DRAFT
-\SetWatermarkText{ }						% To remove temporarily Watermarks : set it to be a blank space
-\usepackage{background}
+% !TeX program = pdflatex
+% !TeX encoding = UTF-8
+\documentclass[12pt,a4paper,oneside]{report}
+\input{structure}
 
-\backgroundsetup{%
-  scale=1,       %% change accordingly
-  angle=0,       %% change accordingly
-  opacity=.2,    %% change accordingly
-  color =black,  %% change accordingly
-  contents={\begin{tikzpicture}[remember picture,overlay]
-        \node at ([yshift=11pt,xshift=5pt]current page.center) {\includegraphics{UII_watermark.png}};    %% Replace UII_watermark.png with the actual UII logo file
-    \end{tikzpicture}}
-}
+% ============================================================================
+% DATA UTAMA — ubah nilai di bawah ini tanpa mengubah struktur dokumen.
+% ============================================================================
+\newcommand{\judulTA}{BAGIAN INI ADALAH BAGIAN JUDUL -- TULIS JUDUL DENGAN POLA PIRAMIDA TERBALIK}
+\newcommand{\namaMahasiswa}{NAMA MAHASISWA}
+\newcommand{\nimMahasiswa}{20523000}
+\newcommand{\namaPembimbing}{Nama Dosen Pembimbing, S.T., M.Eng.}
+\newcommand{\nipPembimbing}{NIK/NIP Pembimbing}
+\newcommand{\namaPengujiSatu}{Nama Dosen Penguji 1, S.T., M.Sc.}
+\newcommand{\nipPengujiSatu}{NIK/NIP Penguji 1}
+\newcommand{\namaPengujiDua}{Nama Dosen Penguji 2, S.T., M.Cs.}
+\newcommand{\nipPengujiDua}{NIK/NIP Penguji 2}
+\newcommand{\ketuaProgramStudi}{Nama Ketua Program Studi, S.T., M.Sc.}
+\newcommand{\nipKetuaProgramStudi}{NIK/NIP Ketua Program Studi}
+\newcommand{\tanggalPengesahan}{Tanggal Bulan Tahun}
+\newcommand{\bulanLulus}{Bulan}
+\newcommand{\tahunLulus}{2026}
+\newcommand{\kotaTerbit}{Yogyakarta}
+\newcommand{\kataKunci}{kata kunci pertama, kata kunci kedua, kata kunci ketiga}
 
-%Set the images path to Images/ for \includegraphics{} command
-\graphicspath{{Images/}} 
-\counterwithin{figure}{chapter}
-\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\setpdfmetadata
+
 \begin{document}
 
-%%%% Fill the basic Data here or directly edit Infos/cover.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% University & Department (normally these won't change for UII Informatika)
-\newcommand{\universityID}{Universitas Islam Indonesia}
-\newcommand{\universityEN}{Universitas Islam Indonesia}
-\newcommand{\facultyID}{Fakultas Teknologi Industri}
-\newcommand{\facultyEN}{Faculty of Industrial Technology}
-\newcommand{\departmentID}{Program Studi Informatika}
-\newcommand{\departmentEN}{Informatics Study Program}
+\input{Infos/frontmatter}
 
-%% Degree Level — choose ONE, comment the others
-%% S1 → Skripsi | S2 → Tesis | S3 → Disertasi
-\newcommand{\degreeLevel}{S2}				% S1, S2, or S3
-
-%% Degree-specific labels are auto-resolved below — do NOT edit this block
-\usepackage{ifthen}
-\ifthenelse{\equal{\degreeLevel}{S1}}{
-  \newcommand{\documentType}{Skripsi}
-  \newcommand{\programLevel}{Program Sarjana}
-  \newcommand{\degreeTitle}{Sarjana Komputer}
-  \newcommand{\degreeAbbr}{S.Kom.}
-  \newcommand{\documentTypeEN}{Undergraduate Thesis}
-  \newcommand{\degreeTitleEN}{Bachelor of Computer Science}
-}{}
-\ifthenelse{\equal{\degreeLevel}{S2}}{
-  \newcommand{\documentType}{Tesis}
-  \newcommand{\programLevel}{Program Magister}
-  \newcommand{\degreeTitle}{Magister Komputer}
-  \newcommand{\degreeAbbr}{M.Kom.}
-  \newcommand{\documentTypeEN}{Master Thesis}
-  \newcommand{\degreeTitleEN}{Master of Computer Science}
-}{}
-\ifthenelse{\equal{\degreeLevel}{S3}}{
-  \newcommand{\documentType}{Disertasi}
-  \newcommand{\programLevel}{Program Doktor}
-  \newcommand{\degreeTitle}{Doktor Ilmu Komputer}
-  \newcommand{\degreeAbbr}{Dr.}
-  \newcommand{\documentTypeEN}{Doctoral Dissertation}
-  \newcommand{\degreeTitleEN}{Doctor of Computer Science}
-}{}
-
-%% Thesis Titles
-\newcommand{\titleID}{Judul Tesis dalam Bahasa Indonesia}	% Thesis title in Indonesian
-\newcommand{\titleEN}{Thesis Title in English}				% Thesis title in English
-
-%% Student Information
-\newcommand{\studentName}{Nama Mahasiswa}					% Full name
-\newcommand{\nim}{12345678}									% Nomor Induk Mahasiswa (NIM)
-
-%% Supervisors
-\newcommand{\advisorName}{Nama Dosen Pembimbing}			% Primary advisor
-\newcommand{\coAdvisorName}{Nama Dosen Pembimbing II}		% Co-advisor (comment out if none)
-
-%% Submission Date
-\newcommand{\submitMonth}{Desember}							% Month in Indonesian
-\newcommand{\submitMonthEN}{December}						% Month in English
-\newcommand{\submitYear}{2024}								% Year
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%% Cover pages, Abstract, Acknowledgment, Table of contents and lists use 1.5cm linespace %%%%%%%%%%%%%%
-\onehalfspace
-%% Input the content of the file infos/covers.tex (just like copy/paste) %%
-\input{Infos/cover} %% covers.tex will use the previous \newcommand
-%%%% Include Thesis Dissertation Validation Statement PDF %%%%%%%%%%%%%%%%%%
-\SetWatermarkText{ }
-\backgroundsetup{
-  contents={\begin{tikzpicture}[remember picture,overlay]
-        \node at ([yshift=11pt,xshift=5pt]current page.center) { };    %% yshift and xshift for example only
-    \end{tikzpicture}}
-}
-\includepdf[pages=1,pagecommand={\thispagestyle{empty}}]{Authorization Form.pdf} 
-\includepdf[pages=1,pagecommand={\thispagestyle{empty}}]{Validation Form.pdf} 
-\backgroundsetup{%
-  scale=1,       %% change accordingly
-  angle=0,       %% change accordingly
-  opacity=.2,    %% change accordingly
-  color =black,  %% change accordingly
-  contents={\begin{tikzpicture}[remember picture,overlay]
-        \node at ([yshift=11pt,xshift=5pt]current page.center) {\includegraphics{UII_watermark.png}};    %% yshift and xshift for example only
-    \end{tikzpicture}}
-}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%% Overwrite margins for sections before actual thesis content %%
-%% Because I think it looks better) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newgeometry{left=3cm,right=3cm,top=2.5cm,bottom=2.5cm}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%% WaterMark starts with Abstracts, comment the line to remove it while writing %%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \SetWatermarkText{\includegraphics{UII_watermark.png}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%% Acknowledgments : Need Edit Chapters/acknowledgments.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%% Even if you deeply hate everyone, it is weird not thank anyone
-%%%%%%% At least thanks your mom, wikipedia and 7-11 %%%%%%%%%%%%%%
+% Bagian utama dimulai dari halaman 1 dengan angka Arab.
 \clearpage
-\pagenumbering{gobble}
-\chapter*{Kata Pengantar}
-\addcontentsline{toc}{chapter}{Kata Pengantar}
-\input{chapters/acknowledgments}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%% Set page number roman style (i,ii,iii etc.) for now %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagenumbering{roman}
-
-%%%%%% Abstracts : Need to edit Chapters/abstractCH.tex and Chapters/abstractEN.tex %%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-\setcounter{page}{1}
-\input{Abstracts/abstracts}
-\addcontentsline{toc}{chapter}{Abstrak / Abstract}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% Using 1.5cm for the Table of Contents %%%
-\onehalfspace
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%% Table of Content, Acronyms and Nomenclature %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%% Usually updating the indexes of tables, figures and content requires to compile twice %%
-%%% To Generate the Table of Contents compiled from the whole document %%
-\clearpage
-\addcontentsline{toc}{chapter}{\contentsname}
-\tableofcontents
-    
-%%% To Generate the List of Figures compiled from the whole document %%%%
-\clearpage
-\addcontentsline{toc}{chapter}{\listfigurename}
-\listoffigures
-
-%%% To Generate the List of Tables compiled from the whole document %%%%
-\clearpage
-\addcontentsline{toc}{chapter}{\listtablename}
-\listoftables
-
-%%% Insert the Acronyms list : Need Edit infos/acronyms.tex %%%%
-\chapter*{Daftar Singkatan}
-\addcontentsline{toc}{chapter}{Daftar Singkatan}
-%% See how to use in infos/acronyms.tex %%%%%
-\input{Infos/acronyms}
-%%% Insert Nomenclature %%%%%%%%%%%%%%%%%%%%%%
-%% Find HOW TO USE nomenclature in infos/HOWTOnomenclature.txt %%%%%
-% \printnomenclature 	% displays the nomenclature here 
-% \addcontentsline{toc}{chapter}{Nomenclature} 
-%% Comment if not used because it will appear in your Table of contents %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%% restore the default margins because now we really start %%%%%%%%%%%%
-\restoregeometry  
-%%%%%%% Writing with double line space for Thesis content %%%%%%%%%%%%%%
-\doublespace
-%%%%%%% From now on we use Arabic numbers for pages numbers %%%%
 \pagenumbering{arabic}
-%% it could have been called Hindu–Arabic but Arabs introduced them to Europeans
-% without properly referencing their contributing sources %%%
-%%%%%%% Do not forget to correctly reference the sources in your Thesis
-% you see how much damage it can do ... 
+\setcounter{page}{1}
+\pagestyle{fancy}
 
-%% Time to actually start writing ... you did not do any s**** so far %%
-%% You should not feel you have accomplished something before at least %%
-%% starting to write some text in your chapters/ChapterName.tex files %%
-
-%% Create a ChapterName.tex source file in the folder chapters for each 
-%% of your Chapter. 
-%% ChapterName.tex will contain the classic Tex format style %% 
-%% With for Example : 
-%% \paragraph{} Intro paragraph
-%% \section{First Section} Text 1
-%% \subsection{Subsection} Text 2
-%% \includegraphics[scale=•]{•}... \cite{ref} ... \ref{label}...etc 
-%% Just as if you were using a single main.tex file, I am just splitting it
-%% into different tex files because writing a thesis is a long process 
-
-%% Personal procedure : I comment the \input{chapters/ChapterName} and type 
-%% my chapter's content directly here in main.tex including the references
-%% Once I am satisfied with a Chapter, I copy it in the chapters/ChapterName.tex
-%% and I copy the related references in biblio/ChapterNamebib.tex 
-%% Then I simply input the whole chapter with \input command
-%% So I can keep a not too long main.tex and can mostly work with one file
-%% The biblio/ChapterNamebib.tex is included in the Bibliography section
-
-%%%%%%% Introduction(Considered as a Chapter for numbering)%%%%%%%%%%%%
-\chapter{Introduction}
 \input{chapters/chapter1}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%% Thesis Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Related Works}
-\label{ch:related_works}
 \input{chapters/chapter2}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/chapter3}
+\input{chapters/chapter4}
+\input{chapters/chapter5}
+\input{chapters/chapter6}
 
-%%%%%%%% Conclusion(Considered as a Chapter for numbering)%%%%%%%%%%%%%%
-\chapter{Conclusion}
-\label{ch:conclusion}
-\input{chapters/conclusion}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%% Bibliography(Excluded from numbering) %%%%%%%%%%%%%%%%%%%%%%%%%
-%% Bibliography uses 1.5cm linespace %%%%
-\onehalfspace
-
-%% On NYCU Library Website Page about Thesis Format, each Department is %%
-%% bounded to a citation style like ACM or IEEE, you should check yours %%
-%% EECS use IEEE citation style %%
+% Daftar pustaka memakai gaya APA edisi ke-6 melalui paket apacite.
 \clearpage
-\addcontentsline{toc}{chapter}{Daftar Pustaka}
-\bibliographystyle{IEEEbib-abbrev}
-\bibliography{Bibliographies/egbib}
-%%%% Insert the Appendices if any %%%%%%%%%%%%%%%%%%%%%%%%
-% \chapter*{Appendices}
-% \input{chapters/appendix}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\bibname}{DAFTAR PUSTAKA}
+\phantomsection
+\addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+\bibliographystyle{apacite}
+\bibliography{Bibliographies/references}
 
-%%%% Insert the Biodata Penulis (not necessary) %%%%%%
-\chapter*{Biodata Penulis}
-\addcontentsline{toc}{chapter}{Biodata Penulis}
-\input{chapters/autobiography}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/appendix}
+
 \end{document}
