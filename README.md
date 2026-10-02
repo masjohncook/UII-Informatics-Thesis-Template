@@ -1,82 +1,131 @@
-# Template Tugas Akhir S1 Informatika UII
+# Template Sarjana dan Magister Informatika UII
 
-Template LaTeX/Overleaf ini mengikuti struktur dan format `Template-skripsi-final-versi2020.docx`.
+Satu project LaTeX/Overleaf ini dapat menghasilkan laporan Tugas Akhir Sarjana atau Tesis Magister. Format Sarjana mengacu pada `Template-skripsi-final-versi2020.docx`, sedangkan format Magister mengacu pada `Rev3 - Template-Laporan-Tesis-MI-topic-base.docx`.
 
-## Pengaturan Overleaf
+## Memilih jenjang
 
-1. Unggah ZIP project sehingga `main.tex` berada di direktori teratas.
-2. Pastikan **Main document** adalah `main.tex`.
-3. Compiler default **pdfLaTeX** dapat langsung digunakan.
-4. Klik **Recompile**. File `latexmkrc` sudah mengatur pdfLaTeX dan BibTeX.
-
-## Mengisi identitas
-
-Semua identitas utama berada di bagian `DATA UTAMA` pada `main.tex`:
-
-- judul tugas akhir;
-- nama dan NIM;
-- pembimbing dan penguji;
-- ketua program studi;
-- tanggal pengesahan;
-- bulan dan tahun kelulusan;
-- kata kunci.
-
-Jangan mengubah `structure.tex` kecuali ingin mengubah aturan format global.
-
-## Format yang diterapkan
-
-- A4;
-- margin 25,4 mm pada semua sisi;
-- font Times-compatible 12 pt melalui `newtxtext` (padanan terbuka Times New Roman yang tersedia di Overleaf);
-- spasi 1,5;
-- paragraf rata kanan-kiri dengan indentasi baris pertama 1 cm;
-- judul bab dan subbab 12 pt tebal;
-- nomor bagian awal menggunakan Romawi kecil;
-- BAB I dimulai kembali pada halaman Arab 1;
-- nomor lampiran disembunyikan;
-- referensi memakai gaya APA edisi ke-6 (`apacite`).
-
-## Struktur isi
-
-- `Infos/frontmatter.tex`: halaman awal sampai daftar gambar;
-- `chapters/chapter1.tex` s.d. `chapter6.tex`: isi utama;
-- `chapters/appendix.tex`: lampiran;
-- `Bibliographies/references.bib`: database referensi;
-- `Images/`: gambar per bab.
-
-## Gambar
+Semua pengaturan berada di `config.tex`. Nilai default adalah Sarjana:
 
 ```latex
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.45\textwidth]{chapter2/apple.jpg}
-  \caption{Judul gambar}
-  \label{fig:contoh}
-\end{figure}
+\def\jenjang{sarjana}
 ```
 
-Acu dalam teks dengan `Gambar~\ref{fig:contoh}`. Letakkan gambar di `Images/` dan selalu tuliskan sumber setelah caption bila gambar bukan karya sendiri.
-
-## Tabel
+Untuk membuat Tesis Magister, ubah satu baris tersebut menjadi:
 
 ```latex
-\begin{table}[H]
-  \centering
-  \caption{Judul tabel}
-  \label{tab:contoh}
-  \begin{tabular}{ll}
-    \toprule
-    Kolom 1 & Kolom 2 \\
-    \midrule
-    Data A & Data B \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+\def\jenjang{magister}
 ```
 
-Caption tabel ditempatkan di atas. Acu dengan `Tabel~\ref{tab:contoh}`.
+Nilai selain `sarjana` atau `magister` akan menghasilkan error yang jelas saat kompilasi. Tidak diperlukan comment/uncomment halaman secara manual.
+
+## Mengisi metadata
+
+Ubah seluruh identitas hanya di `config.tex`:
+
+- judul dan subjudul Indonesia;
+- judul dan subjudul Inggris;
+- nama dan NIM mahasiswa;
+- konsentrasi Magister;
+- pembimbing pertama dan pembimbing kedua;
+- tiga dosen penguji;
+- Ketua Program Studi;
+- tanggal pengesahan dan tahun;
+- kata kunci Indonesia dan Inggris.
+
+Variabel turunan berikut dibuat otomatis berdasarkan jenjang:
+
+- `\jenisDokumen`: Tugas Akhir atau Tesis;
+- `\namaProgram`: PROGRAM SARJANA atau PROGRAM MAGISTER;
+- `\gelarTarget`: Sarjana Komputer atau Magister Komputer;
+- format nomor bab, margin, judul front matter, dan posisi nomor halaman.
+
+### Pembimbing kedua Magister
+
+Kosongkan variabel berikut jika hanya terdapat satu pembimbing:
+
+```latex
+\newcommand{\namaPembimbingDua}{}
+```
+
+Jika ada dua pembimbing, isi nama dan NIK/NIP-nya. Halaman pengesahan Magister otomatis berubah menjadi dua kolom.
+
+## Struktur front matter
+
+`main.tex` memilih dan mengurutkan halaman secara otomatis.
+
+```text
+Infos/frontmatter/
+├── shared/
+│   ├── kata-pengantar.tex
+│   ├── daftar-isi.tex
+│   ├── daftar-tabel.tex
+│   ├── daftar-gambar.tex
+│   └── glosarium.tex
+├── sarjana/
+│   ├── 01-cover.tex
+│   ├── 02-pengesahan-pembimbing.tex
+│   ├── 03-pengesahan-penguji.tex
+│   ├── 04-pernyataan-keaslian.tex
+│   ├── 05-persembahan.tex
+│   ├── 06-moto.tex
+│   └── 07-sari.tex
+└── magister/
+    ├── 01-cover.tex
+    ├── 02-pengesahan-pembimbing.tex
+    ├── 03-pengesahan-penguji.tex
+    ├── 04-abstrak.tex
+    ├── 05-abstract.tex
+    ├── 06-pernyataan-keaslian.tex
+    ├── 07-daftar-publikasi.tex
+    ├── 08-halaman-kontribusi.tex
+    └── 09-persembahan.tex
+```
+
+### Urutan Magister
+
+1. Lembar Pengesahan Pembimbing
+2. Lembar Pengesahan Penguji
+3. Abstrak
+4. Abstract
+5. Pernyataan Keaslian Tulisan
+6. Daftar Publikasi
+7. Halaman Kontribusi
+8. Halaman Persembahan
+9. Kata Pengantar
+10. Daftar Isi
+11. Daftar Tabel
+12. Daftar Gambar
+13. Glosarium
+
+### Perbedaan format otomatis
+
+- Sarjana: margin 25,4 mm semua sisi, nomor halaman di kanan atas, bab Romawi.
+- Magister: margin kiri 30 mm dan sisi lain 25 mm, nomor halaman di tengah bawah, bab Arab.
+- Cover, pengesahan, pernyataan, abstrak, serta halaman khusus dipilih otomatis.
+- Isi chapter masih digunakan bersama untuk kedua jenjang pada tahap ini.
+
+## Struktur isi dan objek
+
+```text
+chapters/                  narasi setiap bab
+elements/figures/          satu file .tex untuk setiap gambar
+elements/tables/           satu file .tex untuk setiap tabel
+elements/algorithms/       satu file .tex untuk setiap algoritma atau kode
+Images/                    file PNG/JPG
+Bibliographies/            database BibTeX
+```
+
+Dari file chapter, panggil objek dengan `\input`:
+
+```latex
+\input{elements/figures/contoh-gambar}
+\input{elements/tables/contoh-data}
+\input{elements/algorithms/contoh-kode-rata-rata}
+```
 
 ## Persamaan
+
+Persamaan dapat ditulis di file chapter:
 
 ```latex
 \begin{equation}
@@ -85,74 +134,43 @@ Caption tabel ditempatkan di atas. Acu dengan `Tabel~\ref{tab:contoh}`.
 \end{equation}
 ```
 
-Acu dengan `Persamaan~\eqref{eq:linear}`. Nomor mengikuti bab, misalnya `(3.1)`.
-
-## Kode program
-
-Gunakan `lstlisting`. Format global sudah mengatur font monospaced 9 pt dan spasi tunggal. Contoh lengkap tersedia di `chapters/chapter3.tex`.
+Acu dengan `Persamaan~\eqref{eq:linear}`.
 
 ## Referensi
 
-Tambahkan entri BibTeX ke `Bibliographies/references.bib`:
+Tambahkan sumber ke `Bibliographies/references.bib` dan gunakan:
 
-```bibtex
-@book{sommerville2016,
-  author    = {Ian Sommerville},
-  title     = {Software Engineering},
-  year      = {2016},
-  publisher = {Pearson}
-}
+```latex
+\cite{kode-referensi}
 ```
 
-Gunakan `\cite{...}` dalam naskah. Jangan mengetik daftar pustaka secara manual.
+Daftar pustaka memakai gaya APA edisi ke-6 melalui `apacite`.
 
-## Kompilasi lokal
+## Pengaturan Overleaf
 
-### Cara 1: Menggunakan skrip PowerShell bawaan (Rekomendasi di Windows)
+1. Pastikan Main document adalah `main.tex`.
+2. Gunakan compiler default pdfLaTeX.
+3. Klik Recompile setelah mengubah `config.tex`.
 
-Jalankan perintah ini di PowerShell (tidak memerlukan Perl):
+## Kompilasi lokal Windows
 
 ```powershell
 .\build.ps1
 ```
 
-Untuk membersihkan file auxiliary/temporary:
+Untuk membersihkan file hasil kompilasi:
 
 ```powershell
 .\build.ps1 -Clean
 ```
 
----
+Alternatif manual:
 
-### Cara 2: Perintah manual pdfLaTeX & BibTeX
-
-```powershell
-pdflatex -interaction=nonstopmode -enable-installer main.tex
+```text
+pdflatex main.tex
 bibtex main
-pdflatex -interaction=nonstopmode -enable-installer main.tex
-pdflatex -interaction=nonstopmode -enable-installer main.tex
+pdflatex main.tex
+pdflatex main.tex
 ```
 
----
-
-### Cara 3: Menggunakan `latexmk` (Memerlukan Perl)
-
-Jika ingin tetap menggunakan `latexmk -pdf main.tex`, instal Perl terlebih dahulu di Windows (melalui Strawberry Perl):
-
-```powershell
-winget install StrawberryPerl.StrawberryPerl
-```
-
-Setelah selesai install dan membuka terminal baru, jalankan:
-
-```text
-latexmk -pdf main.tex
-```
-
-Bersihkan output build dengan:
-
-```text
-latexmk -C
-```
-
-File PDF dan auxiliary tidak perlu dimasukkan ke ZIP sumber Overleaf.
+Jangan masukkan file PDF dan auxiliary ke ZIP sumber Overleaf.

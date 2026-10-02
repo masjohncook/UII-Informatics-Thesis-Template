@@ -1,35 +1,55 @@
 % !TeX program = pdflatex
 % !TeX encoding = UTF-8
 \documentclass[12pt,a4paper,oneside]{report}
+\input{config}
 \input{structure}
-
-% ============================================================================
-% DATA UTAMA — ubah nilai di bawah ini tanpa mengubah struktur dokumen.
-% ============================================================================
-\newcommand{\judulTA}{BAGIAN INI ADALAH BAGIAN JUDUL -- TULIS JUDUL DENGAN POLA PIRAMIDA TERBALIK}
-\newcommand{\namaMahasiswa}{NAMA MAHASISWA}
-\newcommand{\nimMahasiswa}{20523000}
-\newcommand{\namaPembimbing}{Nama Dosen Pembimbing, S.T., M.Eng.}
-\newcommand{\nipPembimbing}{NIK/NIP Pembimbing}
-\newcommand{\namaPengujiSatu}{Nama Dosen Penguji 1, S.T., M.Sc.}
-\newcommand{\nipPengujiSatu}{NIK/NIP Penguji 1}
-\newcommand{\namaPengujiDua}{Nama Dosen Penguji 2, S.T., M.Cs.}
-\newcommand{\nipPengujiDua}{NIK/NIP Penguji 2}
-\newcommand{\ketuaProgramStudi}{Nama Ketua Program Studi, S.T., M.Sc.}
-\newcommand{\nipKetuaProgramStudi}{NIK/NIP Ketua Program Studi}
-\newcommand{\tanggalPengesahan}{Tanggal Bulan Tahun}
-\newcommand{\bulanLulus}{Bulan}
-\newcommand{\tahunLulus}{2026}
-\newcommand{\kotaTerbit}{Yogyakarta}
-\newcommand{\kataKunci}{kata kunci pertama, kata kunci kedua, kata kunci ketiga}
-
 \setpdfmetadata
 
 \begin{document}
 
-\input{Infos/frontmatter}
+% Cover berbeda menurut jenjang.
+\ifmagister
+  \input{Infos/frontmatter/magister/01-cover}
+\else
+  \input{Infos/frontmatter/sarjana/01-cover}
+\fi
 
-% Bagian utama dimulai dari halaman 1 dengan angka Arab.
+% Nomor awal berbeda: Magister mulai i, Sarjana mulai ii.
+\clearpage
+\pagenumbering{roman}
+\ifmagister\setcounter{page}{1}\else\setcounter{page}{2}\fi
+\pagestyle{fancy}
+
+% Urutan front matter khusus jenjang.
+\ifmagister
+  \input{Infos/frontmatter/magister/02-pengesahan-pembimbing}
+  \input{Infos/frontmatter/magister/03-pengesahan-penguji}
+  \input{Infos/frontmatter/magister/04-abstrak}
+  \input{Infos/frontmatter/magister/05-abstract}
+  \input{Infos/frontmatter/magister/06-pernyataan-keaslian}
+  \input{Infos/frontmatter/magister/07-daftar-publikasi}
+  \input{Infos/frontmatter/magister/08-halaman-kontribusi}
+  \input{Infos/frontmatter/magister/09-persembahan}
+  \input{Infos/frontmatter/shared/kata-pengantar}
+  \input{Infos/frontmatter/shared/daftar-isi}
+  \input{Infos/frontmatter/shared/daftar-tabel}
+  \input{Infos/frontmatter/shared/daftar-gambar}
+  \input{Infos/frontmatter/shared/glosarium}
+\else
+  \input{Infos/frontmatter/sarjana/02-pengesahan-pembimbing}
+  \input{Infos/frontmatter/sarjana/03-pengesahan-penguji}
+  \input{Infos/frontmatter/sarjana/04-pernyataan-keaslian}
+  \input{Infos/frontmatter/sarjana/05-persembahan}
+  \input{Infos/frontmatter/sarjana/06-moto}
+  \input{Infos/frontmatter/shared/kata-pengantar}
+  \input{Infos/frontmatter/sarjana/07-sari}
+  \input{Infos/frontmatter/shared/glosarium}
+  \input{Infos/frontmatter/shared/daftar-isi}
+  \input{Infos/frontmatter/shared/daftar-tabel}
+  \input{Infos/frontmatter/shared/daftar-gambar}
+\fi
+
+% Bagian utama tetap shared pada tahap ini.
 \clearpage
 \pagenumbering{arabic}
 \setcounter{page}{1}
@@ -42,11 +62,10 @@
 \input{chapters/chapter5}
 \input{chapters/chapter6}
 
-% Daftar pustaka memakai gaya APA edisi ke-6 melalui paket apacite.
 \clearpage
-\renewcommand{\bibname}{DAFTAR PUSTAKA}
+\ifmagister\def\bibname{Daftar Pustaka}\else\def\bibname{DAFTAR PUSTAKA}\fi
 \phantomsection
-\addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+\addcontentsline{toc}{chapter}{\bibname}
 \bibliographystyle{apacite}
 \bibliography{Bibliographies/references}
 

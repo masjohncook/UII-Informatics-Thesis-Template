@@ -1,14 +1,18 @@
-% Konfigurasi format Template Tugas Akhir S1 Informatika UII
-% Acuan: Template-skripsi-final-versi2020.docx
+% Konfigurasi format Template Sarjana/Magister Informatika UII
 
-% Font Times-compatible yang stabil pada compiler default pdfLaTeX di Overleaf.
-% newtxtext/newtxmath merupakan padanan terbuka Times New Roman untuk teks dan rumus.
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{newtxtext,newtxmath}
 \usepackage{tgcursor}
+\usepackage{etoolbox}
 
-\usepackage[a4paper,top=25.4mm,bottom=25.4mm,left=25.4mm,right=25.4mm]{geometry}
+% Margin mengikuti masing-masing template Word.
+\ifmagister
+  \usepackage[a4paper,top=25mm,bottom=25mm,left=30mm,right=25mm]{geometry}
+\else
+  \usepackage[a4paper,top=25.4mm,bottom=25.4mm,left=25.4mm,right=25.4mm]{geometry}
+\fi
+
 \usepackage{setspace}
 \onehalfspacing%
 \setlength{\parindent}{1cm}
@@ -36,132 +40,111 @@
 \usepackage{microtype}
 \usepackage[hidelinks,unicode,hypertexnames=false]{hyperref}
 
-% Warna hanya dipakai pada kotak petunjuk template.
 \definecolor{uiiyellow}{HTML}{F4C300}
 \definecolor{instructionbg}{HTML}{FFF3F3}
 \definecolor{instructionborder}{HTML}{B00020}
 
-% Penomoran bab menggunakan Romawi, sedangkan turunan dan objek memakai angka Arab.
-\renewcommand{\thechapter}{\Roman{chapter}}
+% Penomoran bab berbeda; objek tetap memakai nomor bab Arab.
+\ifmagister
+  \renewcommand{\thechapter}{\arabic{chapter}}
+\else
+  \renewcommand{\thechapter}{\Roman{chapter}}
+\fi
 \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
 \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
-% Daftar Isi berhenti pada anak subbab (subsection).
-% Cucu subbab (subsubsection) tidak bernomor dan tidak masuk Daftar Isi.
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}
 
-% Judul bab dan subbab mengikuti Times New Roman 12 pt, tebal, spasi 1,5.
-\titleformat{\chapter}[display]
-  {\normalfont\bfseries\fontsize{12}{18}\selectfont\centering}
-  {BAB \Roman{chapter}}{0pt}{\MakeUppercase}
+% Judul bab mengikuti masing-masing template.
+\ifmagister
+  \titleformat{\chapter}[display]
+    {\normalfont\bfseries\fontsize{16}{24}\selectfont\centering}
+    {BAB \arabic{chapter}}{0pt}{}
+  \newcommand{\formatjudulbagian}[1]{#1}
+\else
+  \titleformat{\chapter}[display]
+    {\normalfont\bfseries\fontsize{12}{18}\selectfont\centering}
+    {BAB \Roman{chapter}}{0pt}{\MakeUppercase}
+  \newcommand{\formatjudulbagian}[1]{\MakeUppercase{#1}}
+\fi
 \titleformat{name=\chapter,numberless}[display]
   {\normalfont\bfseries\fontsize{12}{18}\selectfont\centering}
-  {}{0pt}{\MakeUppercase}
+  {}{0pt}{\formatjudulbagian}
 \titlespacing*{\chapter}{0pt}{0pt}{18pt}
 
-\titleformat{\section}
-  {\normalfont\bfseries\fontsize{12}{18}\selectfont}
-  {\thesection}{0.8em}{}
-\titleformat{\subsection}
-  {\normalfont\bfseries\fontsize{12}{18}\selectfont}
-  {\thesubsection}{0.8em}{}
-\titleformat{\subsubsection}
-  {\normalfont\bfseries\fontsize{12}{18}\selectfont}
-  {\thesubsubsection}{0.8em}{}
+\titleformat{\section}{\normalfont\bfseries\fontsize{12}{18}\selectfont}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\normalfont\bfseries\fontsize{12}{18}\selectfont}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\fontsize{12}{18}\selectfont}{\thesubsubsection}{0.8em}{}
 \titlespacing*{\section}{0pt}{18pt}{0pt}
 \titlespacing*{\subsection}{0pt}{18pt}{0pt}
 \titlespacing*{\subsubsection}{0pt}{18pt}{0pt}
 
-% Nomor halaman di kanan atas seperti template Word; tanpa garis header/footer.
+% Posisi nomor halaman mengikuti template: Magister bawah-tengah, Sarjana kanan-atas.
 \pagestyle{fancy}
 \fancyhf{}
 \setlength{\headheight}{15pt}
-\fancyhead[R]{\fontsize{12}{14}\selectfont\thepage}
+\ifmagister
+  \fancyfoot[C]{\fontsize{12}{14}\selectfont\thepage}
+\else
+  \fancyhead[R]{\fontsize{12}{14}\selectfont\thepage}
+\fi
 \def\headrulewidth{0pt}
 \def\footrulewidth{0pt}
 \fancypagestyle{plain}{%
   \fancyhf{}
-  \fancyhead[R]{\fontsize{12}{14}\selectfont\thepage}
+  \ifmagister
+    \fancyfoot[C]{\fontsize{12}{14}\selectfont\thepage}
+  \else
+    \fancyhead[R]{\fontsize{12}{14}\selectfont\thepage}
+  \fi
   \def\headrulewidth{0pt}
   \def\footrulewidth{0pt}
 }
 
-% Label lokal dan format caption.
-\renewcommand{\contentsname}{DAFTAR ISI}
-\renewcommand{\listfigurename}{DAFTAR GAMBAR}
-\renewcommand{\listtablename}{DAFTAR TABEL}
-\renewcommand{\bibname}{DAFTAR PUSTAKA}
+% Label otomatis menurut jenjang.
+\ifmagister
+  \renewcommand{\contentsname}{Daftar Isi}
+  \renewcommand{\listfigurename}{Daftar Gambar}
+  \renewcommand{\listtablename}{Daftar Tabel}
+  \renewcommand{\bibname}{Daftar Pustaka}
+\else
+  \renewcommand{\contentsname}{DAFTAR ISI}
+  \renewcommand{\listfigurename}{DAFTAR GAMBAR}
+  \renewcommand{\listtablename}{DAFTAR TABEL}
+  \renewcommand{\bibname}{DAFTAR PUSTAKA}
+\fi
 \renewcommand{\figurename}{Gambar}
 \renewcommand{\tablename}{Tabel}
-\captionsetup{
-  font={normalfont,stretch=1.5},
-  labelfont=normalfont,
-  textfont=normalfont,
-  labelsep=space,
-  justification=centering,
-  singlelinecheck=true,
-  skip=6pt
-}
+\captionsetup{font={normalfont,stretch=1.5},labelfont=normalfont,textfont=normalfont,labelsep=space,justification=centering,singlelinecheck=true,skip=6pt}
 \captionsetup[table]{position=top}
 \captionsetup[figure]{position=bottom}
 
-% Daftar dan penomoran bertingkat.
 \setlist{nosep,leftmargin=1cm,labelsep=0.4cm}
 \setlist[enumerate,1]{label=\alph*.,ref=\alph*}
 \setlist[enumerate,2]{label={(\arabic*)},ref={\theenumi.\arabic*}}
 
-% Kode program: font monospaced 9 pt dan spasi tunggal.
-\lstset{
-  basicstyle=\ttfamily\fontsize{9}{10.8}\selectfont,
-  breaklines=true,
-  columns=fullflexible,
-  keepspaces=true,
-  showstringspaces=false,
-  frame=single,
-  rulecolor=\color{black},
-  xleftmargin=6pt,
-  xrightmargin=6pt,
-  aboveskip=6pt,
-  belowskip=6pt
-}
+\lstset{basicstyle=\ttfamily\fontsize{9}{10.8}\selectfont,breaklines=true,columns=fullflexible,keepspaces=true,showstringspaces=false,frame=single,rulecolor=\color{black},xleftmargin=6pt,xrightmargin=6pt,aboveskip=6pt,belowskip=6pt}
 
-% Kotak petunjuk berwarna merah seperti penanda pada template Word.
 \newcommand{\petunjuk}[1]{%
   \begin{center}
   \setlength{\fboxsep}{8pt}%
-  \fcolorbox{instructionborder}{instructionbg}{%
-    \parbox{0.92\textwidth}{\color{instructionborder}\singlespacing\fontsize{10}{12}\selectfont\textbf{PETUNJUK TEMPLATE:} #1}%
-  }
+  \fcolorbox{instructionborder}{instructionbg}{\parbox{0.92\textwidth}{\color{instructionborder}\singlespacing\fontsize{10}{12}\selectfont\textbf{PETUNJUK TEMPLATE:} #1}}%
   \end{center}
 }
 
-% Judul bagian awal yang boleh/tidak boleh masuk Daftar Isi.
-\newcommand{\bagianawal}[1]{%
-  \clearpage
-  \phantomsection%
-  \chapter*{#1}
-  \addcontentsline{toc}{chapter}{#1}
-}
-\newcommand{\bagianawaltanpatoc}[1]{%
-  \clearpage
-  \chapter*{#1}
-}
-
-% Kolom tabel yang fleksibel.
+\newcommand{\bagianawal}[1]{\clearpage\phantomsection\chapter*{#1}\addcontentsline{toc}{chapter}{#1}}
+\newcommand{\bagianawaltanpatoc}[1]{\clearpage\chapter*{#1}}
 \newcolumntype{Y}{>{\csname raggedright\endcsname\arraybackslash}X}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcommand{\pemisahidentitas}{:}
 
-% Metadata PDF diisi setelah variabel identitas didefinisikan pada main.tex.
+\newcommand{\cetakJudulIndonesia}{\judulTA\ifstrempty{\subjudulTA}{}{:\space\subjudulTA}}
+\newcommand{\cetakJudulInggris}{\judulInggris\ifstrempty{\subjudulInggris}{}{:\space\subjudulInggris}}
+
 \newcommand{\setpdfmetadata}{%
-  \hypersetup{
-    pdftitle={\judulTA},
-    pdfauthor={\namaMahasiswa},
-    pdfsubject={Tugas Akhir Program Studi Informatika Universitas Islam Indonesia},
-    pdfkeywords={tugas akhir, informatika, UII}
-  }
+  \hypersetup{pdftitle={\cetakJudulIndonesia},pdfauthor={\namaMahasiswa},pdfsubject={\jenisDokumen\ \namaProgramKalimat},pdfkeywords={\kataKunci}}%
 }

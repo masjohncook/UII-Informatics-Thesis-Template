@@ -10,15 +10,7 @@ Sitasi ditulis melalui database BibTeX, bukan diketik manual. Contoh sitasi dala
 
 Setiap gambar harus disebutkan terlebih dahulu dalam narasi. Sebagai contoh, Gambar~\ref{fig:contoh-gambar} memperlihatkan objek yang digunakan untuk menjelaskan cara memasukkan gambar ke dalam laporan.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.35\textwidth]{chapter2/apple.jpg}
-  \caption{Contoh penempatan gambar di dalam laporan}
-  \label{fig:contoh-gambar}
-\end{figure}
-\begin{center}
-  \fontsize{12}{18}\selectfont Sumber: Dokumentasi contoh template
-\end{center}
+\input{elements/figures/contoh-gambar}
 
 Caption gambar ditempatkan di bawah gambar. Apabila gambar berasal dari pihak lain, tuliskan sumber yang sesuai dan pastikan sumber tersebut juga dicantumkan dalam Daftar Pustaka bila diperlukan.
 
@@ -26,20 +18,7 @@ Caption gambar ditempatkan di bawah gambar. Apabila gambar berasal dari pihak la
 
 Tabel harus diperkenalkan melalui narasi sebelum ditampilkan. Ringkasan contoh data dapat dilihat pada Tabel~\ref{tab:contoh-data}.
 
-\begin{table}[H]
-  \centering
-  \caption{Contoh ringkasan data pengujian}
-  \label{tab:contoh-data}
-  \begin{tabular}{lcc}
-    \toprule
-    \textbf{Skenario} & \textbf{Jumlah Data} & \textbf{Hasil (\%)} \\
-    \midrule
-    Skenario A & 100 & 91,00 \\
-    Skenario B & 120 & 93,50 \\
-    Skenario C & 80  & 89,75 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+\input{elements/tables/contoh-data}
 
 Caption tabel ditempatkan di atas tabel. Isi tabel boleh menggunakan ukuran font yang lebih kecil bila diperlukan, tetapi tidak boleh lebih kecil dari 9 pt dan harus tetap mudah dibaca.
 
