@@ -8,9 +8,9 @@
 
 % Margin mengikuti masing-masing template Word.
 \ifmagister
-  \usepackage[a4paper,top=25mm,bottom=25mm,left=30mm,right=25mm]{geometry}
+  \usepackage[a4paper,top=25mm,bottom=25mm,left=30mm,right=25mm,headheight=15pt,headsep=7.3mm,footskip=9.2mm]{geometry}
 \else
-  \usepackage[a4paper,top=25.4mm,bottom=25.4mm,left=25.4mm,right=25.4mm]{geometry}
+  \usepackage[a4paper,top=25.4mm,bottom=25.4mm,left=25.4mm,right=25.4mm,headheight=15pt,headsep=7.3mm,footskip=9.2mm]{geometry}
 \fi
 
 \usepackage{setspace}
@@ -71,10 +71,12 @@
     {BAB \Roman{chapter}}{0pt}{\MakeUppercase}
   \newcommand{\formatjudulbagian}[1]{\MakeUppercase{#1}}
 \fi
-\titleformat{name=\chapter,numberless}[display]
+\titleformat{name=\chapter,numberless}[block]
   {\normalfont\bfseries\fontsize{12}{18}\selectfont\centering}
   {}{0pt}{\formatjudulbagian}
-\titlespacing*{\chapter}{0pt}{0pt}{18pt}
+% -14 pt meniadakan ruang vertikal bawaan report agar posisi judul bab
+% sejajar dengan template Word tanpa mengubah margin isi 2,54 cm.
+\titlespacing*{\chapter}{0pt}{-14pt}{18pt}
 
 \titleformat{\section}{\normalfont\bfseries\fontsize{12}{18}\selectfont}{\thesection}{0.8em}{}
 \titleformat{\subsection}{\normalfont\bfseries\fontsize{12}{18}\selectfont}{\thesubsection}{0.8em}{}
@@ -83,7 +85,11 @@
 \titlespacing*{\subsection}{0pt}{18pt}{0pt}
 \titlespacing*{\subsubsection}{0pt}{18pt}{0pt}
 
-% Posisi nomor halaman mengikuti template: Magister bawah-tengah, Sarjana kanan-atas.
+% Word mengukur header/footer 1,27 cm dari tepi halaman. LaTeX mengukur
+% headsep dan footskip dari kotak teks, sehingga nilainya tidak dapat disalin
+% mentah sebagai 12,7 mm. Nilai di geometry telah dikalibrasi terhadap render
+% Word agar posisi visual header/footer setara 1,27 cm:
+% Magister bawah-tengah, Sarjana kanan-atas.
 \pagestyle{fancy}
 \fancyhf{}
 \setlength{\headheight}{15pt}
