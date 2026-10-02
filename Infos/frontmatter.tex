@@ -12,22 +12,32 @@
 
 \bagianawaltanpatoc{HALAMAN PENGESAHAN DOSEN PEMBIMBING}
 
+% Watermark kuning ditempatkan tepat di tengah halaman seperti template Word.
+\AddToShipoutPictureBG*{%
+  \put(\LenToUnit{60mm},\LenToUnit{87mm}){%
+    \includegraphics[width=90mm]{UII-Watermark.png}%
+  }%
+}
+
 \begin{center}
   {\bfseries\fontsize{16}{24}\selectfont \judulTA\par}
-  \vspace{8mm}
+  \vspace{4mm}
   {\bfseries TUGAS AKHIR\par}
-  \vspace{6mm}
+  \vspace{42mm}
   Disusun Oleh:\par
-  \textbf{\namaMahasiswa}\par
-  \textbf{\nimMahasiswa}\par
+  \vspace{16mm}
+  \begin{tabular}{@{}p{28mm}p{5mm}p{65mm}@{}}
+    N\,a\,m\,a & {\pemisahidentitas} & {\namaMahasiswa} \\
+    NIM & {\pemisahidentitas} & {\nimMahasiswa} \\
+  \end{tabular}
 \end{center}
 
-\vfill
+\vspace{38mm}
 \begin{center}
   \kotaTerbit, \tanggalPengesahan\par
-  Dosen Pembimbing,\par
+  Pembimbing,\par
   \vspace{25mm}
-  \textbf{\namaPembimbing}\par
+  ( \namaPembimbing{} )\par
   \nipPembimbing
 \end{center}
 
@@ -145,7 +155,7 @@ Paragraf ketiga menjelaskan hasil utama dan kesimpulan yang diperoleh. Cantumkan
 \bagianawal{GLOSARIUM}
 \petunjuk{Bagian ini opsional. Urutkan istilah secara alfabetis dan hapus istilah contoh yang tidak digunakan.}
 
-\begin{description}[style=multiline,leftmargin=35mm,font=\normalfont\bfseries]
+\begin{description}[style=multiline,leftmargin=35mm,font=\normalfont]
   \item[Compile] Proses menerjemahkan berkas kode sumber dan berkas terkait menjadi bentuk yang dapat dijalankan atau diproses lebih lanjut.
   \item[Debug] Kegiatan menelusuri dan memperbaiki kesalahan pada perangkat lunak.
   \item[Waterfall] Salah satu model pengembangan perangkat lunak yang membagi proses ke dalam tahapan berurutan.

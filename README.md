@@ -108,6 +108,43 @@ Gunakan `\cite{...}` dalam naskah. Jangan mengetik daftar pustaka secara manual.
 
 ## Kompilasi lokal
 
+### Cara 1: Menggunakan skrip PowerShell bawaan (Rekomendasi di Windows)
+
+Jalankan perintah ini di PowerShell (tidak memerlukan Perl):
+
+```powershell
+.\build.ps1
+```
+
+Untuk membersihkan file auxiliary/temporary:
+
+```powershell
+.\build.ps1 -Clean
+```
+
+---
+
+### Cara 2: Perintah manual pdfLaTeX & BibTeX
+
+```powershell
+pdflatex -interaction=nonstopmode -enable-installer main.tex
+bibtex main
+pdflatex -interaction=nonstopmode -enable-installer main.tex
+pdflatex -interaction=nonstopmode -enable-installer main.tex
+```
+
+---
+
+### Cara 3: Menggunakan `latexmk` (Memerlukan Perl)
+
+Jika ingin tetap menggunakan `latexmk -pdf main.tex`, instal Perl terlebih dahulu di Windows (melalui Strawberry Perl):
+
+```powershell
+winget install StrawberryPerl.StrawberryPerl
+```
+
+Setelah selesai install dan membuka terminal baru, jalankan:
+
 ```text
 latexmk -pdf main.tex
 ```

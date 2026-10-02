@@ -18,6 +18,7 @@
 
 \usepackage{graphicx}
 \graphicspath{{Images/}{./}}
+\usepackage{eso-pic}
 \usepackage{float}
 \usepackage{booktabs}
 \usepackage{array}
@@ -48,8 +49,10 @@
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
+% Daftar Isi berhenti pada anak subbab (subsection).
+% Cucu subbab (subsubsection) tidak bernomor dan tidak masuk Daftar Isi.
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
 
 % Judul bab dan subbab mengikuti Times New Roman 12 pt, tebal, spasi 1,5.
 \titleformat{\chapter}[display]
@@ -73,17 +76,18 @@
 \titlespacing*{\subsection}{0pt}{18pt}{0pt}
 \titlespacing*{\subsubsection}{0pt}{18pt}{0pt}
 
-% Nomor halaman di tengah bawah; tanpa header.
+% Nomor halaman di kanan atas seperti template Word; tanpa garis header/footer.
 \pagestyle{fancy}
 \fancyhf{}
-\fancyfoot[C]{\fontsize{12}{14}\selectfont\thepage}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+\fancyhead[R]{\fontsize{12}{14}\selectfont\thepage}
+\def\headrulewidth{0pt}
+\def\footrulewidth{0pt}
 \fancypagestyle{plain}{%
   \fancyhf{}
-  \fancyfoot[C]{\fontsize{12}{14}\selectfont\thepage}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
+  \fancyhead[R]{\fontsize{12}{14}\selectfont\thepage}
+  \def\headrulewidth{0pt}
+  \def\footrulewidth{0pt}
 }
 
 % Label lokal dan format caption.
@@ -148,8 +152,9 @@
 }
 
 % Kolom tabel yang fleksibel.
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{Y}{>{\csname raggedright\endcsname\arraybackslash}X}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcommand{\pemisahidentitas}{:}
 
 % Metadata PDF diisi setelah variabel identitas didefinisikan pada main.tex.
 \newcommand{\setpdfmetadata}{%
