@@ -148,8 +148,10 @@
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcommand{\pemisahidentitas}{:}
 
-\newcommand{\cetakJudulIndonesia}{\judulTA\ifstrempty{\subjudulTA}{}{:\space\subjudulTA}}
-\newcommand{\cetakJudulInggris}{\judulInggris\ifstrempty{\subjudulInggris}{}{:\space\subjudulInggris}}
+% \ifdefempty memeriksa isi macro, bukan sekadar token nama macro. Dengan
+% demikian tanda titik dua hanya ditampilkan ketika subjudul benar-benar diisi.
+\newcommand{\cetakJudulIndonesia}{\judulTA\ifdefempty{\subjudulTA}{}{:\space\subjudulTA}}
+\newcommand{\cetakJudulInggris}{\judulInggris\ifdefempty{\subjudulInggris}{}{:\space\subjudulInggris}}
 
 \newcommand{\setpdfmetadata}{%
   \hypersetup{pdftitle={\cetakJudulIndonesia},pdfauthor={\namaMahasiswa},pdfsubject={\jenisDokumen\ \namaProgramKalimat},pdfkeywords={\kataKunci}}%
