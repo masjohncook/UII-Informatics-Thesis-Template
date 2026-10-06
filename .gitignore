@@ -1,56 +1,43 @@
-# LaTeX
+# File hasil kompilasi LaTeX
+/main.pdf
+/main.txt
 *.aux
 *.bbl
+*.bcf
 *.blg
 *.dvi
 *.fdb_latexmk
 *.fls
 *.fmt
 *.fot
-*.cb
-*.cb2
-*.lb
 *.lof
+*.log
 *.lot
 *.out
-*.toc
-*.pdf
-*.ps
-*.eps
+*.run.xml
 *.synctex.gz
-*.synctex(busy)
+*.toc
+*.xdv
+*.ilg
+*.ind
+*.idx
+*.nlo
+*.nls
+*.glo
+*.gls
+*.acn
+*.acr
+*.alg
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-.venv
-*.egg-info/
-dist/
-build/
-
-# IDE
+# Editor dan sistem operasi
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-# OS
 .DS_Store
 Thumbs.db
 
-# TensorFlow
-.tensorflow/
-*.pb
-*.ckpt*
-logs/
-
-*.doc
-*.docx
-
-ASSESSMENT.md
+# Berkas sementara
+__pycache__/
+*.py[cod]

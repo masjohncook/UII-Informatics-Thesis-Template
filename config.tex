@@ -1,0 +1,70 @@
+% ============================================================================
+% KONFIGURASI TEMPLATE — ubah nilai di file ini saja.
+% ============================================================================
+
+% Pilihan jenjang yang valid: sarjana atau magister
+\def\jenjang{sarjana}
+\def\jenjangSarjana{sarjana}
+\def\jenjangMagister{magister}
+\newif\ifmagister
+\ifx\jenjang\jenjangMagister
+  \magistertrue
+\else\ifx\jenjang\jenjangSarjana
+  \magisterfalse
+\else
+  \PackageError{UII-Template}{Jenjang '\jenjang' tidak dikenali}{Gunakan nilai 'sarjana' atau 'magister' pada config.tex.}
+\fi\fi
+
+% Data karya ilmiah
+\newcommand{\judulTA}{BAGIAN INI ADALAH BAGIAN JUDUL}
+\newcommand{\subjudulTA}{TULIS SUBJUDUL DI SINI JIKA ADA}
+\newcommand{\judulInggris}{ENGLISH THESIS TITLE}
+\newcommand{\subjudulInggris}{ENGLISH SUBTITLE IF APPLICABLE}
+
+% Data mahasiswa
+\newcommand{\namaMahasiswa}{NAMA MAHASISWA}
+\newcommand{\nimMahasiswa}{20523000}
+\newcommand{\konsentrasiMagister}{NAMA KONSENTRASI}
+
+% Data pembimbing. Kosongkan namaPembimbingDua jika hanya ada satu pembimbing.
+\newcommand{\namaPembimbing}{Nama Dosen Pembimbing, S.T., M.Eng.}
+\newcommand{\nipPembimbing}{NIK/NIP Pembimbing}
+\newcommand{\namaPembimbingDua}{}
+\newcommand{\nipPembimbingDua}{}
+
+% Data penguji
+\newcommand{\namaPengujiSatu}{Nama Dosen Penguji 1, S.T., M.Sc.}
+\newcommand{\nipPengujiSatu}{NIK/NIP Penguji 1}
+\newcommand{\namaPengujiDua}{Nama Dosen Penguji 2, S.T., M.Cs.}
+\newcommand{\nipPengujiDua}{NIK/NIP Penguji 2}
+\newcommand{\namaPengujiTiga}{Nama Dosen Penguji 3, S.T., M.Kom.}
+\newcommand{\nipPengujiTiga}{NIK/NIP Penguji 3}
+
+% Data program studi dan waktu
+\newcommand{\ketuaProgramStudi}{Nama Ketua Program Studi, S.T., M.Sc.}
+\newcommand{\nipKetuaProgramStudi}{NIK/NIP Ketua Program Studi}
+\newcommand{\tanggalPengesahan}{Tanggal Bulan Tahun}
+\newcommand{\bulanLulus}{Bulan}
+\newcommand{\tahunLulus}{2026}
+\newcommand{\kotaTerbit}{Yogyakarta}
+
+% Kata kunci
+\newcommand{\kataKunci}{kata kunci pertama, kata kunci kedua, kata kunci ketiga}
+\newcommand{\keywords}{keyword one, keyword two, keyword three}
+
+% Nilai turunan otomatis berdasarkan jenjang.
+\ifmagister
+  \newcommand{\jenisDokumen}{Tesis}
+  \newcommand{\jenisDokumenKapital}{TESIS}
+  \newcommand{\namaProgram}{PROGRAM MAGISTER}
+  \newcommand{\namaProgramKalimat}{Program Studi Informatika Program Magister}
+  \newcommand{\gelarTarget}{Magister Komputer}
+  \newcommand{\singkatanGelar}{M.Kom.}
+\else
+  \newcommand{\jenisDokumen}{Tugas Akhir}
+  \newcommand{\jenisDokumenKapital}{TUGAS AKHIR}
+  \newcommand{\namaProgram}{PROGRAM SARJANA}
+  \newcommand{\namaProgramKalimat}{Program Studi Informatika Program Sarjana}
+  \newcommand{\gelarTarget}{Sarjana Komputer}
+  \newcommand{\singkatanGelar}{S.Kom.}
+\fi

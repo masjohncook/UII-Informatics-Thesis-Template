@@ -1,287 +1,40 @@
-\section{New section Title}
-Some Texts before Subsection if you want. 
+\chapter{PENDAHULUAN}
 
-\subsection{New Subsection Title}\label{label_subsection}
-Some Texts here to explain some stuffs and eventually use some references like a journal \cite{ieee-journal}, a conference \cite{ieee-conf} or a book chapter \cite{book-chapter}. 
+\petunjuk{Gunakan bab ini untuk menjelaskan latar belakang, rumusan masalah, batasan masalah, tujuan, manfaat, metodologi singkat, dan sistematika penulisan. Hapus seluruh kotak petunjuk sebelum penyerahan akhir.}
 
-\par 
-This subsection can be referenced also just like figures or table with \ref{label_subsection}. 
+\section{Latar Belakang}
 
-\subsubsection{New sub-sub-section}
-You can even go lower in indenting your sections like here.
-It is the lowest you can reach with this template. However, this level does not appear in the Table of Content. 
+Tuliskan latar belakang secara runtut dari konteks umum menuju masalah khusus yang akan diselesaikan. Setiap paragraf menggunakan Times New Roman 12 pt, spasi 1,5, rata kanan-kiri, dan indentasi baris pertama 1 cm. Hindari paragraf yang hanya terdiri dari satu kalimat.
 
-\paragraph{A paragraph title here} As you see the order of references is messed up in \ref{label_subsection} because in Chapter1bib.tex I listed the reference for the book chapter before the one of the conference. You won't have this issue with a proper bibtex reference system but I did not use it. If you do like me, double check carefully that you do not have duplicated references.\\
-Next, I ensure \textbf{2.2} starts next page so I insert $pagebreak$
-\pagebreak
-\begin{lstlisting}[basicstyle=\small, label=some-code,caption=Source Code Chapter II Sections Subsections Cite and References]
-\section{New section Title}
-Some Texts before Subsection if you want. 
-\subsection{New Subsection Title}\label{label_subsection}
-Some Texts here to explain some stuffs and eventually use 
-some references like a journal \cite{ieee-journal}, 
-a conference \cite{ieee-conf} or a book chapter 
-\cite{book-chapter}. 
-\par This subsection can be referenced also just like figures 
-or table with \ref{label_subsection}. 
-\subsubsection{New sub-sub-section}
-You can even go lower in indenting your sections like here.
-It is the lowest you can reach with this template. However,
- this level does not appear in the Table of Content. 
-\paragraph{A paragraph title here} As you see the order 
-of references is messed up in \ref{label_subsection} because 
-in Chapter1bib.tex I listed the reference for the book 
-chapter before the one of the conference. 
-You won't have this issue with a proper bibtex reference system but 
-I did not use it. If you do like me, double check carefully that 
-you do not have duplicated references.\\
-Next, I ensure \textbf{2.2} starts next page so I insert $pagebreak$
-\pagebreak
-\end{lstlisting}
-\pagebreak
-\section{Figures}
-Inserting Figures, Scale them, add label, title and footnotes eventually. 
-\subsection{Figure With Footnote}
-\begin{lstlisting}[basicstyle=\small, label=some-code,caption=Source Code Figure With Footnote]
-\begin{figure}[!ht]
-      \centering
-      \includegraphics[scale=0.3]{chapter1/portrait.jpeg}
-      \caption{We could not take much selfies back then, 
-      				we had to ask someone to draw us}
-      \floatfoot{Source : Wikipedia}
-      \label{portrait1}
- \end{figure}
-\end{lstlisting}
-\begin{figure}[!ht]
-      \centering
-      \includegraphics[scale=0.3]{chapter1/portrait.jpeg}
-      \caption{We could not take much selfies back then, we had to ask someone to draw us}
-      \floatfoot{Source : Wikipedia}
-      \label{portrait1}
- \end{figure}
-Figure.\ref{portrait1} is my portrait. I can put it because I am a legend, but I do not recommend you do it in your Thesis.
+\subsection{Contoh Anak Subbab}
 
-\subsection{Figure Bigger but Without Footnote}
-\begin{lstlisting}[basicstyle=\small, label=some-code,caption=Source Code Figure Bigger but Without Footnote]
-\begin{figure}[!ht]
-      \centering
-      \includegraphics[scale=0.6]{chapter1/portrait.jpeg}
-      \caption{On Google Image it seems that I have been old my all life}
-      \label{portrait2}
- \end{figure}
-\end{lstlisting}
-\begin{figure}[!ht]
-      \centering
-      \includegraphics[scale=0.6]{chapter1/portrait.jpeg}
-      \caption{On Google Image it seems that I have been old my all life}
-      \label{portrait2}
- \end{figure}
+Anak subbab menggunakan penomoran tiga tingkat, misalnya 1.1.1. Anak subbab dicetak tebal dan dimasukkan ke dalam Daftar Isi.
 
-Figure.\ref{portrait2} is my bigger portrait, so it is automatically placed on the next page, and this tiny text although written after the picture insertion appears before.  
-However, it annoys me so I will force continuing on a the next page. 
-\newpage 
-\section{Tables}
+\subsubsection*{Contoh Cucu Subbab}
 
-This is how to reference a table, Table.\ref{table1}.
+Cucu subbab dicetak tebal tanpa nomor. Cucu subbab tidak dimasukkan ke dalam Daftar Isi. Gunakan tingkat ini hanya bila uraian benar-benar memerlukan pembagian tambahan di bawah anak subbab.
 
-\begin{table}[!ht]
-   \caption{Simple Table without footnotes}
-   \label{table1}
-    \centering
-    \begin{threeparttable}
-      \small
-      \begin{tabular}{lcc}\toprule
-         X & Y & Z \\
-           & y & z \\ \midrule
-         X & Y & Z \\
-         X & Y & Z \\ \bottomrule
-       \end{tabular}
-     \end{threeparttable} 
-\end{table}
+\section{Rumusan Masalah}
 
-\begin{lstlisting}[basicstyle=\small, label=some-code,caption=Source Code Simple Table without footnotes]
-\begin{table}[!ht]
-   \caption{Simple Table without footnotes}
-   \label{table1}
-    \centering
-    \begin{threeparttable}
-      \small
-      \begin{tabular}{lcc}\toprule
-         X & Y & Z \\
-           & y & z \\ \midrule
-         X & Y & Z \\
-         X & Y & Z \\ \bottomrule
-       \end{tabular}
-     \end{threeparttable} 
-\end{table}
-\end{lstlisting}
+Rumusan masalah harus konsisten dengan tujuan dan kesimpulan. Apabila perlu dituliskan sebagai daftar, gunakan format berikut.
 
-\newpage
-\begin{table}[!ht]
-	\caption{The title is meant to be a very long table caption, which is wider than the table itself.}
-	\label{table:meanerrorbaseline}
-	\begin{threeparttable}
-		\renewcommand{\TPTminimum}{\linewidth}
-		\makebox[\linewidth]{%
-			\begin{tabular}{cc}
-		\toprule
-		Endowment & Mean error \\ 
-		\midrule
-		0         & 1.67 \\
-		1         & 1.49*      \\
-		2         & 1.42**     \\
-		3         & 1.30***    \\
-		4         & 1.15***    \\
-		5         & 1.15***    \\
-		6         & 1.09***    \\
-		7         & 1.02***    \\
-		8         & 0.92***    \\
-		9         & 0.85***    \\
-		10        & 0.76**     \\
-		\bottomrule
-		\end{tabular}}
-\begin{tablenotes}
-  \small
-  \item The note is meant to be wider than the table itself, without having to make  the table wider and making it look ugly. 
-   \end{tablenotes}
-\end{threeparttable}
-\end{table}
+\begin{enumerate}
+  \item Bagaimana merancang solusi untuk permasalahan yang telah diidentifikasi?
+  \item Bagaimana mengevaluasi solusi tersebut menggunakan ukuran yang relevan?
+\end{enumerate}
 
-\begin{lstlisting}[basicstyle=\small, label=some-code,caption=Source Code Table with footnotes and very very long title]
-\begin{table}[!ht]
-	\caption{The title is meant to be a very long table caption, 
-				which is wider than the table itself.}
-	\label{table:meanerrorbaseline}
-	\begin{threeparttable}
-		\renewcommand{\TPTminimum}{\linewidth}
-		\makebox[\linewidth]{%
-			\begin{tabular}{cc}
-		\toprule
-		Endowment & Mean error \\ 
-		\midrule
-		0         & 1.67 \\
-		1         & 1.49*      \\
-		2         & 1.42**     \\
-		3         & 1.30***    \\
-		4         & 1.15***    \\
-		5         & 1.15***    \\
-		6         & 1.09***    \\
-		7         & 1.02***    \\
-		8         & 0.92***    \\
-		9         & 0.85***    \\
-		10        & 0.76**     \\
-		\bottomrule
-		\end{tabular}}
-\begin{tablenotes}
-  \small
-  \item The note is meant to be wider than the table itself, 
- without having to make  the table wider and making it look ugly. 
-   \end{tablenotes}
-\end{threeparttable}
-\end{table}
-\end{lstlisting}
+\section{Batasan Masalah}
 
-\begin{savenotes}
-    \begin{table}[ht]
-        \centering
-        \begin{tabular}{|l|c|c|}
-            \hline
-            A & 1 & 2 \footnote{This is the first footnote.} \\
-            \hline
-            B & 2 & 1 \\
-            \hline
-            C & 3\footnote{This is the second footnote.} & 3 \\
-            \hline
-        \end{tabular}
-        \caption{A table caption.}
-        \end{table}%
-\end{savenotes}
+Batasan masalah menjelaskan ruang lingkup data, pengguna, teknologi, lokasi, waktu, atau fitur yang termasuk dan tidak termasuk dalam tugas akhir.
 
-\begin{lstlisting}[basicstyle=\small, label=some-code,caption=Source Code Insert Bottom footnotes]
-\begin{table}[ht]
-        \centering
-        \begin{tabular}{|l|c|c|}
-            \hline
-            A & 1 & 2 \footnote{This is the first footnote.} \\
-            \hline
-            B & 2 & 1 \\
-            \hline
-            C & 3\footnote{This is the second footnote.} & 3 \\
-            \hline
-        \end{tabular}
-        \caption{A table caption.}
-        \end{table}%
-\end{lstlisting}
+\section{Tujuan Penelitian}
 
-\section{Equations and Nomenclature}
+Tujuan harus menjawab rumusan masalah dan menggunakan kata kerja yang dapat dievaluasi, misalnya merancang, mengimplementasikan, membandingkan, atau mengukur.
 
-Nomenclature is also often called Symbols section. We add the Plank constant 
-symbol to the nomenclature. See the HOW TO text file to know the steps to compile
-the nomenclature if you need it. 
+\section{Manfaat Penelitian}
 
-\begin{equation}
-F(x)= \int^a_b \frac{\gamma}{3}h^3 \label{eq}
-\end{equation}
-% first use of the symbol for Planck constant force so we declare for nomenclature -- does not appear in the text
-\nomenclature{$a$}{first parameter}
-\nomenclature{$b$}{second parameter}
-\nomenclature{$h$}{Planck constant}
-\nomenclature{$\gamma$}{Magical parameter found randomly}
+Jelaskan manfaat akademik dan manfaat praktis yang diharapkan dari hasil tugas akhir.
 
-\begin{lstlisting}[basicstyle=\small, label=some-code,caption=Equations and Eventually Filling Nomenclature]
-\begin{equation}
-F(x)= \int^a_b \frac{\gamma}{3}h^3 \label{eq}
-\end{equation}
-% first use of the symbol for Planck constant force so we declare 
-%for nomenclature 
--- does not appear in the text
-\nomenclature{$a$}{first parameter}
-\nomenclature{$b$}{second parameter}
-\nomenclature{$h$}{Planck constant}
-\nomenclature{$\gamma$}{Magical parameter found randomly}
-\end{lstlisting}
+\section{Sistematika Penulisan}
 
-\subsection{How To : Nomenclature}
-You can find a *.TXT file named "HOWTOnomenclature.txt" in the folder $Infos$
-
-\section{Acronyms}
-There is a file in the folder Infos called "acronyms.tex"
-\begin{lstlisting}[basicstyle=\small, label=some-code,caption=Content of acronyms.tex]
-\begin{acronym}
-%% DEFINE ALL YOUR ACRONYMS HERE %%
-\acro{NCTU}{National Chiao Tung University}
-\acro{TW}{Taiwan}
-%\acro{acronym in text}{full corresponding text}
-\end{acronym}
-\end{lstlisting}
-"acronyms.text" is inserted in the "main.tex" under the chapter acronyms. There is a "*" next to chapter
-to indicate the compiler not to number this chapter but still include it in the Table of Content.
-\par 
-blablablablabl \ac{NCTU} , first time I am talking about NCTU. 
-Bloblobbloblob \ac{NCTU}, I already talked about NCTU. 
-Bliblibliblibli \acl{NCTU} if I want to reuse the full name after.
-
-\begin{lstlisting}[basicstyle=\small, label=some-code,caption=Acronyms]
-blablablablabl \ac{NCTU} , first time I am talking about NCTU. 
-Bloblobbloblob \ac{NCTU}, I already talked about NCTU. 
-Bliblibliblibli \acl{NCTU} if I want to reuse the full name after.
-\end{lstlisting}
-
-If you try something that was not put in the file "Infos/acronyms.tex" like "BYOB", 
-when you use the acronym command it will appear like this: \ac{BYOB}. \\
-Please not that just writing in Capital letter will have the same effect as using the short acronym command, it is up to you to use it. You still need to write it in acronyms.tex, the compiler cannot
-read in your brain (yet..). 
-
-\section{Comment Section} 
-There is a commented text in this section that is not compiled.
-\begin{comment}
-This can be commented it will not appear in the compiled file.
-\end{comment}
-
-\begin{lstlisting}[basicstyle=\small, label=some-code,caption=Commenting your own TEX]
-There is a commented text in this section that is not compiled.
-\begin{comment}
-This can be commented it will not appear in the compiled file.
-\end{comment}
-\end{lstlisting}
-
+Jelaskan isi setiap bab secara singkat agar pembaca memahami alur keseluruhan laporan.

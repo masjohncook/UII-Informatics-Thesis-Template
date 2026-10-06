@@ -1,8 +1,31 @@
-\paragraph{Sample PDF Complete} A simple inclusion of a PDF file. It will start on next page and be inserted. 
-% Format command : \includepdf[page=-]{filename}
-\includepdf[page=-]{Appendices/sample}
+% Lampiran tidak menampilkan nomor halaman sesuai template Word.
+\clearpage
+\pagenumbering{gobble}
+\pagestyle{empty}
+\phantomsection
+\addcontentsline{toc}{chapter}{LAMPIRAN}
+\chapter*{LAMPIRAN A}
+\begin{center}
+  \textbf{PETUNJUK PENGGUNAAN TEMPLATE}
+\end{center}
 
-\paragraph{Sample PDF Only Page no.2} Only include the second page of a PDF file.It will start on next page and be inserted. 
-% Format command : \includepdf[page={page number,page number,etc.}]{filename}
-\includepdf[page={2}]{Appendices/sample}
+\petunjuk{Pada Daftar Isi hanya judul utama LAMPIRAN yang dimasukkan. Ganti bagian ini dengan instrumen penelitian, data tambahan, dokumentasi pengujian, kode program lengkap, atau dokumen pendukung lain.}
 
+\section*{A.1 Contoh Isi Lampiran}
+
+Lampiran dapat berisi materi yang terlalu panjang apabila ditempatkan pada bagian utama. Setiap lampiran diberi huruf kapital secara berurutan, misalnya LAMPIRAN A, LAMPIRAN B, dan seterusnya.
+
+\section*{A.2 Contoh Tabel Lampiran}
+
+\begin{table}[H]
+  \centering
+  \caption*{Tabel A.1 Contoh data tambahan}
+  \begin{tabular}{lc}
+    \toprule
+    \textbf{Data} & \textbf{Nilai} \\
+    \midrule
+    Contoh 1 & 10 \\
+    Contoh 2 & 20 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

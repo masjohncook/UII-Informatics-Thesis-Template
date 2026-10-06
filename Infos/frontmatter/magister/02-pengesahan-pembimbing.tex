@@ -1,0 +1,32 @@
+\bagianawal{Lembar Pengesahan Pembimbing}
+
+\noindent\AddToShipoutPictureBG*{%
+  \put(\LenToUnit{60mm},\LenToUnit{87mm}){\includegraphics[width=90mm]{UII-Watermark.png}}%
+}
+
+\begin{center}
+  {\bfseries \cetakJudulIndonesia\par}
+  \vspace{14mm}
+  \namaMahasiswa\par
+  \nimMahasiswa\par
+  \vspace{18mm}
+  \kotaTerbit, \tanggalPengesahan\par
+\end{center}
+
+\vfill
+{\small\itshape Jika terdapat dua pembimbing yang telah bergelar doktor, pembimbing pertama diletakkan di sebelah kiri dan pembimbing kedua di sebelah kanan. Pembimbing yang belum bergelar doktor tidak perlu ditulis pada halaman ini.\par}
+
+\vspace{8mm}
+\ifdefempty{\namaPembimbingDua}{%
+  \begin{center}
+    Pembimbing\par
+    \vspace{24mm}
+    \namaPembimbing\par
+  \end{center}\par
+}{%
+  \noindent\begin{tabularx}{\textwidth}{C C}
+    Pembimbing I & Pembimbing II \\
+    \addlinespace[24mm]
+    \namaPembimbing & \namaPembimbingDua \\
+  \end{tabularx}\par
+}\par
